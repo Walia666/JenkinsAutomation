@@ -1,0 +1,144 @@
+<html>
+ 
+ {% load staticfiles %}
+{% block content %}
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+</head>
+<style>
+#main{
+    position: relative;
+
+}
+
+#invoer{
+    position: absolute;
+    bottom: 10px;
+}
+
+.fixedbutton {
+    position: fixed;
+    bottom: 560px;
+    right: 1000px;
+ 
+}
+
+.feedback {
+  background-color : #31B0D5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border-color: #46b8da;
+}
+
+#mybutton {
+  position: fixed;
+  bottom: -4px;
+  right: 10px;
+}
+</style>
+<body>
+<div id="main" style="width:100%"> 
+
+
+</div>
+
+<script>
+var data = "{{ status_count_list|escapejs  }}";
+var jsdata = JSON.parse(data)
+var testdata = "{{ testdict|escapejs  }}";
+var testdatajs=JSON.parse(testdata);
+console.log(testdatajs);
+</script>
+  <script>
+   
+    console.log(jsdata);
+    const data1 = Object.entries(jsdata)
+                   .map(([name, y]) => ({ name, y }))
+    console.log(data1); 
+    var arr=[];
+    let res = Object.values(testdatajs).map(([s, f, a, u]) => [{
+    name: "Success",
+    y: s
+  },
+  {
+    name: "Failure",
+    y: f
+  },
+  {
+    name: "Aborted",
+    y: a
+  },
+  {
+    name: "Unstable",
+    y: u
+  }
+])
+var server=[]
+for (var key in testdatajs) {
+              server.push(key)
+
+                }
+console.log(server);	
+console.log(res);
+for(i=0;i<res.length;i++)
+{
+var div = document.createElement("div");
+div.id = "container"+i;
+div.style.cssFloat = "left";
+div.style.width="25%"
+document.getElementById("main").appendChild(div);
+}
+  
+ for(i=0;i<res.length;i++)
+       
+	{
+    Highcharts.chart('container'+String(i), {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: server[i]
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+	    size:"50%",
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+	 
+          name: 'Success',
+          data: res[i]
+}]
+});
+
+}
+  
+  </script>
+  <form id="submit_form" name ="myform" action="/refresh/" method="post"> {% csrf_token %}
+  <div id="mybutton">
+<button class="feedback">Refresh</button>
+</div>
+</form>
+</body>
+</div>
+
+{% endblock %}
+
+</html>

@@ -1,0 +1,47 @@
+<html>
+<body>
+{{status_list_dict}}
+{% load chart_tags %}
+
+
+
+{% chart %}
+{% for key, values in status_count_list.items %}
+{{key}}
+{{values}}
+    http://chart.apis.google.com/chart
+       ?chxr=0,0,160
+       &chxt=y
+       &chbh=a
+       &chs=440x220
+       &cht=bvs
+       &chco=4D89F9
+       &chds=0,160
+       &chd=t:10,20,90
+       &chtt=Horizontal+bar+chart
+{% endfor %}
+{% endchart %}
+
+
+
+{% load static %} 
+<script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

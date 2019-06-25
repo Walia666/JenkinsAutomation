@@ -1,0 +1,11 @@
+Server,Successful,Failure,Aborted,Unstable
+ost-fqa1_Refresh,1,0,0,0
+FQA4_JIRA,66,4,1,1
+FQA7_JIRA,98,4,2,1
+FQA8_JIRA,141,7,6,0
+Refresh-FQA6,3,0,2,0
+ost-fqa1,16,4,0,0
+Refresh-FQA8,20,0,0,0
+FQA6_JIRA,2,0,0,0
+Refresh-FQA7,7,0,0,0
+Refresh-FQA4,14,0,0,0

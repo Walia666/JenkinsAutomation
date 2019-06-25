@@ -1,0 +1,15 @@
+from celery import Celery
+from celery.task.schedules import crontab
+from celery.decorators import periodic_task
+from django_celery_beat.models import PeriodicTask, IntervalSchedule
+import time
+from datetime import timedelta
+import json
+import datetime
+import unicodedata
+from celery.utils.log import get_task_logger
+logger = get_task_logger(__name__)
+@periodic_task(run_every=(timedelta(seconds=30)), name="elast", ignore_result=True)
+def elast():
+	print "test"
+	

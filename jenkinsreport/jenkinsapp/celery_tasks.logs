@@ -1,0 +1,6 @@
+[2019-05-13 14:06:43,135: WARNING/MainProcess] /home/shopclues/project/env/local/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+
+[2019-05-13 14:09:09,516: WARNING/MainProcess] /home/shopclues/project/env/local/lib/python2.7/site-packages/celery/fixups/django.py:202: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+

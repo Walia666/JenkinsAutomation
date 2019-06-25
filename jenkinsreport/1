@@ -1,0 +1,22 @@
+from celery import Celery
+from celery.task.schedules import crontab
+from celery.decorators import periodic_task
+from django_celery_beat.models import PeriodicTask, IntervalSchedule
+import time
+from datetime import timedelta
+import json
+import datetime
+import unicodedata
+from .models import build_ite_issue
+from celery.utils.log import get_task_logger
+from celery import task
+from sandbox.celery import app
+logger = get_task_logger(__name__)
+
+#Value=build_ite_issue.objects.all()
+#for ob in Value:
+#	minute=ob.minute
+#	hour=ob.hour
+@periodic_task(run_every=crontab(minute=36, hour=12), name="elast")
+def elast():
+        print "hi"	

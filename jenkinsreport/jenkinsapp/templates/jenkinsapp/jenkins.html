@@ -1,0 +1,27 @@
+<html>
+<body>
+
+
+<table style="width:100%" cellspacing=10>
+  <tr>
+    <th>Job Name</th>
+    <th>Success</th> 
+    <th>Failure</th>
+    <th>Unstable</th> 
+    <th>Aborted</th>
+  </tr>
+  {% for key, values in status_count_list.items %}
+  <tr>
+    <td align="center">{{key}}</td>
+    <td align="center">{{values.0}}</td>
+    <td align="center">{{values.1}}</td>
+    <td align="center">{{values.2}}</td>
+    <td align="center">{{values.3}}</td>
+  </tr>
+ {% endfor %}
+</table>
+
+
+{{status_count_list}}
+</body>
+</html>
