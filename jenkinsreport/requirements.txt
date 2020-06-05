@@ -1,7 +1,7 @@
 #INSTALL PIP PACKAGES
 celery==4.2.0
 redis==3.2.1
-Django==1.8
+Django==1.11.29
 jira==2.0.0
 django-celery-beat==1.1.1
 python-jenkins==1.4.0
