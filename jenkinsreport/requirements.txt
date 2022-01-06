@@ -1,5 +1,5 @@
 #INSTALL PIP PACKAGES
-celery==4.2.0
+celery==5.2.2
 redis==3.2.1
 Django==1.8
 jira==2.0.0
